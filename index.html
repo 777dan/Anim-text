@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="add_text('block', ['Hello!', 'Guten Tag', 'Hola', 'Aloha'])">Добавить текст</button>
+    <button onclick="deleteWord()">Удалить слово</button>
+    <div id="block"></div>
+    <script>
+        function add_text(id, text) {
+            let wordsRandom = Math.floor(Math.random() * text.length - 1);
+            let elem = document.getElementById(id);
+            let pos = 1;
+
+            function add_letter() {
+                elem.innerHTML = text[wordsRandom].substring(0, pos);
+                pos++;
+                if (pos > text[wordsRandom].length) {
+                    clearInterval(timer);
+                }
+            }
+            let timer = setInterval(add_letter, 1000);
+        }
+
+        function deleteWord() {
+            document.getElementById("block").innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
